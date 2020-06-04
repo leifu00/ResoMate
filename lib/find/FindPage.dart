@@ -115,7 +115,7 @@ class Page extends State<FindPage> {
 
   Widget a_post(BuildContext context) {
     return new Container(
-      margin: EdgeInsets.only(top: 10),
+      margin: EdgeInsets.only(top: 10,left: 10,right: 10),
       color: Color.fromARGB(80, 250, 200, 150),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
