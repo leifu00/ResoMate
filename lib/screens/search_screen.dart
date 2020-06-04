@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'upload_screen.dart';
 
-class UploadScreen extends StatefulWidget {
+class SearchScreen extends StatefulWidget {
   @override
-  _UploadScreenState createState() => _UploadScreenState();
+  _SearchScreenState createState() => _SearchScreenState();
 }
 
-class _UploadScreenState extends State<UploadScreen> {
+class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +22,7 @@ class _UploadScreenState extends State<UploadScreen> {
                   padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom,
                   ),
-                  child: AddNoticeScreen(),
+                  child: UploadScreen(),
                 ),
               ),
             );

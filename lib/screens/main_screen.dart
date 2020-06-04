@@ -1,12 +1,39 @@
 import 'package:flutter/material.dart';
 import 'search_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+final _firestore = Firestore.instance;
+FirebaseUser loggedInUser;
 
 class MainScreen extends StatefulWidget {
+  static const String id = 'main_screen';
+
   @override
   _MainScreenState createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
+  final _auth = FirebaseAuth.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        print(user.email);
+        loggedInUser = user;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   int _selectedIndex = 0;
   static const TextStyle optionStyle = TextStyle(
     fontSize: 30,
@@ -17,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
       'Index 0: Home',
       style: optionStyle,
     ),
-    UploadScreen(),
+    SearchScreen(),
     Text(
       'Index 2: Chat',
       style: optionStyle,
