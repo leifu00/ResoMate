@@ -20,17 +20,11 @@ class _MessagesListState extends State<MessagesList> {
 //      },
 //      itemCount: 3,
 //    );
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        PostsStream(),
-      ],
-    );
+    return MessagesStream();
   }
 }
 
-class PostsStream extends StatelessWidget {
+class MessagesStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -43,38 +37,71 @@ class PostsStream extends StatelessWidget {
             ),
           );
         }
-        final posts = snapshot.data.documents.reversed;
-        List<Widget> postsList = [];
-        for (var post in posts) {
-          postsList.add(OutlineButton(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+        final messages = snapshot.data.documents.reversed;
+        List<Widget> messagesList = [];
+        for (var message in messages) {
+//          postsList.add(OutlineButton(
+//              shape: RoundedRectangleBorder(
+//                borderRadius: BorderRadius.circular(10),
+//              ),
+//              onPressed: () {
+//                context
+//                    .read<UserData>()
+//                    .setCurrentChatWIth(post.data['sender']);
+//                Navigator.pushNamed(context, ChatScreen.id);
+//              },
+//              child: Row(
+//                children: <Widget>[
+//                  Text(
+//                    post.data['text'],
+//                  ),
+//                  SizedBox(
+//                    width: 20,
+//                  ),
+//                  Text(
+//                    post.data['sender'],
+//                  )
+//                ],
+//              )));
+          messagesList.add(
+            Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(),
+                ),
               ),
-              onPressed: () {
-                context
-                    .read<UserData>()
-                    .setCurrentChatWIth(post.data['sender']);
-                Navigator.pushNamed(context, ChatScreen.id);
-              },
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    post.data['text'],
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    post.data['sender'],
-                  )
-                ],
-              )));
+              child: ListTile(
+                  leading: Icon(Icons.message),
+                  onTap: () {
+                    context
+                        .read<UserData>()
+                        .setCurrentChatWIth(message.data['sender']);
+                    Navigator.pushNamed(context, ChatScreen.id);
+                  },
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        message.data['sender'],
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        message.data['text'],
+                        style: TextStyle(fontSize: 15),
+                      ),
+                    ],
+                  )),
+            ),
+          );
         }
-        return Expanded(
-          child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-            children: postsList,
-          ),
+        return ListView(
+          children: ListTile.divideTiles(
+            context: context,
+            tiles: messagesList,
+          ).toList(),
         );
       },
     );
