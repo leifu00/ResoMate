@@ -5,7 +5,17 @@ import 'package:resomate/screens/chat_screen.dart';
 import 'package:provider/provider.dart';
 
 final _firestore = Firestore.instance;
-List<String> types = ['Singer', 'Composer', 'MV Producer'];
+List<Icon> icons = [
+  Icon(Icons.music_note),
+  Icon(Icons.movie),
+  Icon(Icons.create),
+];
+
+List<String> types = [
+  'singer',
+  'MV Producer',
+  'composer',
+];
 
 class PostsList extends StatefulWidget {
   @override
@@ -21,13 +31,14 @@ class _PostsListState extends State<PostsList> {
 //      },
 //      itemCount: 3,
 //    );
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        PostsStream(),
-      ],
-    );
+    return PostsStream();
+//    return Column(
+//      mainAxisAlignment: MainAxisAlignment.start,
+//      crossAxisAlignment: CrossAxisAlignment.stretch,
+//      children: <Widget>[
+//        PostsStream(),
+//      ],
+//    );
   }
 }
 
@@ -47,33 +58,43 @@ class PostsStream extends StatelessWidget {
         final posts = snapshot.data.documents.reversed;
         List<Widget> postsList = [];
         for (var post in posts) {
-          postsList.add(OutlineButton(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+          postsList.add(Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(),
               ),
-              onPressed: () {
-                context.read<UserData>().setCurrentChatWIth(post.data['email']);
-                Navigator.pushNamed(context, ChatScreen.id);
-              },
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    types[post.data['type']],
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    post.data['email'],
-                  )
-                ],
-              )));
+            ),
+            child: ListTile(
+                leading: icons[post.data['type']],
+                onTap: () {
+                  context
+                      .read<UserData>()
+                      .setCurrentChatWIth(post.data['email']);
+                  Navigator.pushNamed(context, ChatScreen.id);
+                },
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      post.data['email'],
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Looking for a ${types[post.data['type']]}',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ],
+                )),
+          ));
         }
-        return Expanded(
-          child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-            children: postsList,
-          ),
+        return ListView(
+          children: ListTile.divideTiles(
+            context: context,
+            tiles: postsList,
+          ).toList(),
         );
       },
     );

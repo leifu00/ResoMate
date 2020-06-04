@@ -59,7 +59,7 @@ class _UploadScreenState extends State<UploadScreen> {
               height: 20,
             ),
             Text(
-              'I am looking for',
+              '   I am looking for a ......',
               textAlign: TextAlign.start,
               style: TextStyle(fontSize: 30),
             ),
@@ -67,7 +67,7 @@ class _UploadScreenState extends State<UploadScreen> {
               height: 30,
             ),
             ToggleButtons(
-              constraints: BoxConstraints(minHeight: 80, minWidth: 80),
+              constraints: BoxConstraints(minHeight: 80, minWidth: 120),
               children: <Widget>[
                 Icon(Icons.music_note),
                 Icon(Icons.movie),
