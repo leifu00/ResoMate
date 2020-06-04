@@ -9,8 +9,6 @@ class PostsList extends StatefulWidget {
 }
 
 class _PostsListState extends State<PostsList> {
-  List<String> posts = ['a', 'b', 'c'];
-
   @override
   Widget build(BuildContext context) {
 //    return ListView.builder(
@@ -20,6 +18,8 @@ class _PostsListState extends State<PostsList> {
 //      itemCount: 3,
 //    );
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         PostsStream(),
       ],
@@ -41,13 +41,20 @@ class PostsStream extends StatelessWidget {
           );
         }
         final posts = snapshot.data.documents.reversed;
-        List<Text> postsList = [];
+        List<Widget> postsList = [];
         for (var post in posts) {
-          postsList.add(Text(post.data['type']));
+          postsList.add(OutlineButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            onPressed: () {},
+            child: Text(
+              post.data['type'],
+            ),
+          ));
         }
         return Expanded(
           child: ListView(
-            reverse: true,
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             children: postsList,
           ),
