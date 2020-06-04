@@ -44,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
       'Index 0: Home',
       style: optionStyle,
     ),
-    UploadScreen(),
+    SearchScreen(),
     Text(
       'Index 2: Chat',
       style: optionStyle,

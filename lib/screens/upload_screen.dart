@@ -62,7 +62,7 @@ class _UploadScreenState extends State<UploadScreen> {
                 Navigator.pop((context));
               },
               icon: Icon(Icons.file_upload),
-              label: Text('Upload'),
+              label: Text('Upload and Continue'),
             ),
             SizedBox(
               height: 30,
