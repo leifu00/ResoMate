@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         initialRoute: MainScreen.id,
         routes: {
-          MainScreen.id: (context) => ChatScreen(),
+          MainScreen.id: (context) => MainScreen(),
+          ChatScreen.id: (context) => ChatScreen(),
           RegistrationScreen.id: (context) => RegistrationScreen(),
         },
       ),

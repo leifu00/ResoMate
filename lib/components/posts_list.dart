@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:resomate/models/user_data.dart';
+import 'package:resomate/screens/chat_screen.dart';
+import 'package:provider/provider.dart';
 
 final _firestore = Firestore.instance;
 List<String> types = ['Singer', 'Composer', 'MV Producer'];
@@ -48,7 +51,10 @@ class PostsStream extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
-              onPressed: () {},
+              onPressed: () {
+                context.read<UserData>().setCurrentChatWIth(post.data['email']);
+                Navigator.pushNamed(context, ChatScreen.id);
+              },
               child: Row(
                 children: <Widget>[
                   Text(
