@@ -21,20 +21,55 @@ class Page extends State<MinePage> {
       body: new ListView(
         children: <Widget>[
           test(context),
-          Container(
-            margin: EdgeInsets.only(left: 20),
-            child: ClipOval(
+      Container(
+        margin: EdgeInsets.only(top: 20, bottom: 10,left: 10),
+        child: Row(
+          children: <Widget>[
+            Stack(
+              alignment: Alignment(1, -0.7),
+              children: <Widget>[
+                ClipOval(
+                  child:
+                  Image.asset(
+                    "images/pig.jpg",
+                    width: 80,
+                    height: 80,
+
+                  ),
+                ),
+                Container(
+                  width: 15,
+                  height: 15,
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 255, 50, 50),
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.black12, width: 2),
+                  ),
+                )
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 40),
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.only(left: 30),
+              width: 280,
+              height: 30,
               child: Container(
-                width: 50.0,
-                height: 50.0,
-                color: Color.fromARGB(255, 250, 150, 150),
-                child: Icon(
-                  Icons.person,
-                  size: 40,
+                child: Column(
+                  children: <Widget>[
+                    Text("Name"),
+                    Text("Role",
+                    style: TextStyle(
+                      fontSize: 10,
+                    ),),
+                  ],
+
                 ),
               ),
-            ),
-          ),
+            )
+          ],
+        ),
+      ),
 
         ],
       ),
