@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'match_screen.dart';
 
 class AddNoticeScreen extends StatefulWidget {
   @override
@@ -24,8 +23,16 @@ class _AddNoticeScreenState extends State<AddNoticeScreen> {
           ),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              'I am looking for',
+              textAlign: TextAlign.start,
+              style: TextStyle(fontSize: 30),
+            ),
             SizedBox(
               height: 30,
             ),
@@ -46,18 +53,11 @@ class _AddNoticeScreenState extends State<AddNoticeScreen> {
             SizedBox(
               height: 30,
             ),
-            Text(
-              'I am looking for a ',
-              textAlign: TextAlign.start,
-            ),
             RaisedButton.icon(
               padding:
                   EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 10),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MatchScreen()),
-                );
+                Navigator.pop((context));
               },
               icon: Icon(Icons.file_upload),
               label: Text('Upload'),
