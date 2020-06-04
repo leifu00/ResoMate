@@ -52,7 +52,7 @@ class _ChatScreenState extends State<ChatScreen> {
               }),
         ],
         title: Text(context.watch<UserData>().currentChatWith),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Colors.grey,
       ),
       body: SafeArea(
         child: Column(
@@ -106,7 +106,7 @@ class MessagesStream extends StatelessWidget {
         if (!snapshot.hasData) {
           return Center(
             child: CircularProgressIndicator(
-              backgroundColor: Colors.lightBlueAccent,
+              backgroundColor: Colors.grey,
             ),
           );
         }
@@ -115,7 +115,8 @@ class MessagesStream extends StatelessWidget {
         for (var message in messages) {
           final messageText = message.data['text'];
           final messageSender = message.data['sender'];
-          if (context.watch<UserData>().currentChatWith != messageSender) {
+          if (context.watch<UserData>().currentChatWith != messageSender &&
+              loggedInUser.email != messageSender) {
             continue;
           }
           final currentUser = loggedInUser.email;
@@ -174,7 +175,7 @@ class MessageBubble extends StatelessWidget {
                     topRight: Radius.circular(30.0),
                   ),
             elevation: 5.0,
-            color: isMe ? Colors.lightBlueAccent : Colors.white,
+            color: isMe ? Colors.grey : Colors.white,
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
               child: Text(
