@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'upload_screen.dart';
+import 'package:resomate/components/posts_list.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -27,6 +28,7 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
             );
           }),
+      body: PostsList(),
     );
   }
 }
