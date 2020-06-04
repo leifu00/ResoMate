@@ -15,6 +15,7 @@ class UploadScreen extends StatefulWidget {
 
 class _UploadScreenState extends State<UploadScreen> {
   final isSelected = <bool>[false, false, false];
+  int currentSelected = 0;
 
   final _auth = FirebaseAuth.instance;
 
@@ -75,6 +76,7 @@ class _UploadScreenState extends State<UploadScreen> {
               onPressed: (index) {
                 setState(() {
                   isSelected[index] = !isSelected[index];
+                  currentSelected = index;
                 });
               },
               isSelected: isSelected,
@@ -87,8 +89,8 @@ class _UploadScreenState extends State<UploadScreen> {
                   EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 10),
               onPressed: () {
                 _firestore.collection('posts').add({
-                  'type': 'test',
-                  'sender': loggedInUser.email,
+                  'type': currentSelected,
+                  'email': loggedInUser.email,
                 });
                 Navigator.pop((context));
               },

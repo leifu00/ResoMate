@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final _firestore = Firestore.instance;
+List<String> types = ['Singer', 'Composer', 'MV Producer'];
 
 class PostsList extends StatefulWidget {
   @override
@@ -44,14 +45,23 @@ class PostsStream extends StatelessWidget {
         List<Widget> postsList = [];
         for (var post in posts) {
           postsList.add(OutlineButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            onPressed: () {},
-            child: Text(
-              post.data['type'],
-            ),
-          ));
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              onPressed: () {},
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    types[post.data['type']],
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    post.data['email'],
+                  )
+                ],
+              )));
         }
         return Expanded(
           child: ListView(
