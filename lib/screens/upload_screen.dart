@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+final _firestore = Firestore.instance;
+FirebaseUser loggedInUser;
 
 class UploadScreen extends StatefulWidget {
   static const String id = 'upload_screen';
@@ -10,6 +15,28 @@ class UploadScreen extends StatefulWidget {
 
 class _UploadScreenState extends State<UploadScreen> {
   final isSelected = <bool>[false, false, false];
+
+  final _auth = FirebaseAuth.instance;
+
+  String messageText;
+
+  @override
+  void initState() {
+    super.initState();
+
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        loggedInUser = user;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +86,10 @@ class _UploadScreenState extends State<UploadScreen> {
               padding:
                   EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 10),
               onPressed: () {
+                _firestore.collection('posts').add({
+                  'type': 'test',
+                  'sender': loggedInUser.email,
+                });
                 Navigator.pop((context));
               },
               icon: Icon(Icons.file_upload),
