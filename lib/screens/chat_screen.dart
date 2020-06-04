@@ -115,7 +115,9 @@ class MessagesStream extends StatelessWidget {
         for (var message in messages) {
           final messageText = message.data['text'];
           final messageSender = message.data['sender'];
-
+          if (context.watch<UserData>().currentChatWith != messageSender) {
+            continue;
+          }
           final currentUser = loggedInUser.email;
 
           final messageBubble = MessageBubble(
