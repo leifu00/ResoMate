@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class AddNoticeScreen extends StatefulWidget {
+class UploadScreen extends StatefulWidget {
+  static const String id = 'upload_screen';
+
   @override
-  _AddNoticeScreenState createState() => _AddNoticeScreenState();
+  _UploadScreenState createState() => _UploadScreenState();
 }
 
-class _AddNoticeScreenState extends State<AddNoticeScreen> {
+class _UploadScreenState extends State<UploadScreen> {
   final isSelected = <bool>[false, false, false];
 
   @override

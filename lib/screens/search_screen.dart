@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'upload_screen.dart';
 
 class UploadScreen extends StatefulWidget {
+  static const String id = 'search_screen';
+
   @override
   _UploadScreenState createState() => _UploadScreenState();
 }
@@ -22,7 +24,7 @@ class _UploadScreenState extends State<UploadScreen> {
                   padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom,
                   ),
-                  child: AddNoticeScreen(),
+                  child: UploadScreen(),
                 ),
               ),
             );
