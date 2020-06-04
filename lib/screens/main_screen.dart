@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'search_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'message_screen.dart';
 
 final _firestore = Firestore.instance;
 FirebaseUser loggedInUser;
@@ -45,10 +46,7 @@ class _MainScreenState extends State<MainScreen> {
       style: optionStyle,
     ),
     SearchScreen(),
-    Text(
-      'Index 2: Chat',
-      style: optionStyle,
-    ),
+    MessageScreen(),
     Text(
       'Index 3: Me',
       style: optionStyle,
