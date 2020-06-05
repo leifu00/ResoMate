@@ -67,11 +67,29 @@ class _UploadScreenState extends State<UploadScreen> {
               height: 30,
             ),
             ToggleButtons(
-              constraints: BoxConstraints(minHeight: 80, minWidth: 120),
+              constraints: BoxConstraints(minHeight: 80, minWidth: 100),
               children: <Widget>[
-                Icon(Icons.music_note),
-                Icon(Icons.movie),
-                Icon(Icons.create),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Text('Singer'),
+                    Icon(Icons.music_note),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Text('MV Producer'),
+                    Icon(Icons.movie),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Text('Composer'),
+                    Icon(Icons.create),
+                  ],
+                ),
               ],
               onPressed: (index) {
                 setState(() {
@@ -95,7 +113,7 @@ class _UploadScreenState extends State<UploadScreen> {
                 Navigator.pop((context));
               },
               icon: Icon(Icons.file_upload),
-              label: Text('Upload and Continue'),
+              label: Text('Upload my work and Continue'),
             ),
             SizedBox(
               height: 30,

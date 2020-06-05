@@ -40,6 +40,9 @@ class MessagesStream extends StatelessWidget {
         final messages = snapshot.data.documents.reversed;
         List<Widget> messagesList = [];
         for (var message in messages) {
+          if (message.data['sender'] == context.watch<UserData>().myEmail) {
+            continue;
+          }
 //          postsList.add(OutlineButton(
 //              shape: RoundedRectangleBorder(
 //                borderRadius: BorderRadius.circular(10),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:resomate/models/user_data.dart';
 import 'search_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'message_screen.dart';
+import 'package:provider/provider.dart';
 
 final _firestore = Firestore.instance;
 FirebaseUser loggedInUser;
@@ -29,13 +31,14 @@ class _MainScreenState extends State<MainScreen> {
       if (user != null) {
         print(user.email);
         loggedInUser = user;
+        context.read<UserData>().setMyEmail(user.email);
       }
     } catch (e) {
       print(e);
     }
   }
 
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   static const TextStyle optionStyle = TextStyle(
     fontSize: 30,
     fontWeight: FontWeight.bold,

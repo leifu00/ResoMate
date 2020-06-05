@@ -58,6 +58,9 @@ class PostsStream extends StatelessWidget {
         final posts = snapshot.data.documents.reversed;
         List<Widget> postsList = [];
         for (var post in posts) {
+          if (post.data['email'] == context.watch<UserData>().myEmail) {
+            continue;
+          }
           postsList.add(Container(
             decoration: BoxDecoration(
               border: Border(
