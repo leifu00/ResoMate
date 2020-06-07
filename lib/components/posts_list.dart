@@ -18,6 +18,10 @@ List<String> types = [
 ];
 
 class PostsList extends StatefulWidget {
+  final int type;
+
+  const PostsList({Key key, this.type}) : super(key: key);
+
   @override
   _PostsListState createState() => _PostsListState();
 }
@@ -31,7 +35,9 @@ class _PostsListState extends State<PostsList> {
 //      },
 //      itemCount: 3,
 //    );
-    return PostsStream();
+    return PostsStream(
+      type: widget.type,
+    );
 //    return Column(
 //      mainAxisAlignment: MainAxisAlignment.start,
 //      crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -43,6 +49,10 @@ class _PostsListState extends State<PostsList> {
 }
 
 class PostsStream extends StatelessWidget {
+  final int type;
+
+  const PostsStream({Key key, this.type}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -59,6 +69,9 @@ class PostsStream extends StatelessWidget {
         List<Widget> postsList = [];
         for (var post in posts) {
           if (post.data['email'] == context.watch<UserData>().myEmail) {
+            continue;
+          }
+          if (post.data['type'] != type) {
             continue;
           }
           postsList.add(Container(

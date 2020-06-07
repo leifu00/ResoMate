@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "80632759567",
+    "firebase_url": "https://resomate-bd922.firebaseio.com",
+    "project_id": "resomate-bd922",
+    "storage_bucket": "resomate-bd922.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80632759567:android:f72cc6cacb9a8c256d6a7a",
+        "android_client_info": {
+          "package_name": "leifu.com.resomate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80632759567-r10hfb8ukml0tf93abtdojmuqahfu1qo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrCHsVEwvMLwSsBUMn2RhgZi4t6i3AgBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80632759567-r10hfb8ukml0tf93abtdojmuqahfu1qo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80632759567-3p9hqe016jvbkk4017nerhrc772dqnnv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "leifu.com.resomate"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
