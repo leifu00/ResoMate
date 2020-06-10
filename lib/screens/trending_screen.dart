@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TrendingScreen extends StatefulWidget {
@@ -17,30 +18,92 @@ class _TrendingScreenState extends State<TrendingScreen> {
 Widget buildColumn() =>
     // #docregion Column
 Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
   children: [
     Container(
-        height: 30,
-        child: Text("TOP MUSIC")
+        alignment: Alignment.bottomCenter,
+        width: 145,
+        height: 37,
+        child: Text(
+          "TOP MUSIC",
+          style: TextStyle(
+              fontFamily: "Sans",
+              fontStyle: FontStyle.normal,
+              fontWeight: FontWeight.w900,
+              fontSize: 24,
+              color: Color(0xFF3E4840),
+          ),
+        )
     ),
     Container(
-        height: 150,
-        child: TopMusic()
+        height: 5,
+        color: Color(0xFF29E88C),
     ),
     Container(
-        height: 150,
-        child: TopMusic()
+      height: 5,
+      color: Color(0xFF3E4840),
     ),
     Container(
-        height: 30,
-        child: Text("Golden Musicians")
+        color: Color(0xFFEFF5E9),
+        child: buildTopMusicColumn()
     ),
     Container(
-      height: 150,
-      child: GoldenMusicians(),
+      height: 5,
+      color: Color(0xFF3E4840),
+    ),
+    Container(
+      height: 5,
+      color: Color(0xFF29E88C),
+    ),
+    Container(
+        alignment: Alignment.bottomCenter,
+        width: 210,
+        height: 27,
+        child: Text(
+          "Golden Musicians",
+          style: TextStyle(
+            fontFamily: "Sans",
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.w900,
+            fontSize: 24,
+            color: Color(0xFF3E4840),
+          ),
+        )
+    ),
+    Container(
+      height: 5,
+      color: Color(0xFF29E88C),
+    ),
+    Container(
+      height: 5,
+      color: Color(0xFF3E4840),
+    ),
+    Container(
+      color: Color(0xFFEFF5E9),
+      child: buildGoldenMusiciansColumn(),
+    ),
+    Container(
+      height: 5,
+      color: Color(0xFF3E4840),
+    ),
+    Container(
+      height: 5,
+      color: Color(0xFF29E88C),
     ),
   ],
 );
 // #enddocregion Column
+
+Widget buildTopMusicColumn() =>
+    // #docregion Row
+Column(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    TopMusic(),
+    TopMusic(),
+  ],
+);
+// #enddocregion Row
 
 class TopMusic extends StatefulWidget {
   @override
@@ -73,8 +136,34 @@ Widget buildMusicCoverNamePair() =>
 Column(
   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
   children: [
-    Image.asset('assets/music_cover.jpg'),
-    Text('Some Music'),
+    Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadiusDirectional.circular(18)
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Image.asset('assets/music_cover.jpg'),
+    ),
+    Text(
+      'Some Music',
+      style: TextStyle(
+        fontFamily: "Sans",
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.w500,
+        fontSize: 11,
+        color: Color(0xFF3E4840),
+      ),
+    ),
+  ],
+);
+// #enddocregion Row
+
+Widget buildGoldenMusiciansColumn() =>
+    // #docregion Row
+Column(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    GoldenMusicians(),
+    GoldenMusicians(),
   ],
 );
 // #enddocregion Row
@@ -102,6 +191,7 @@ Row(
     buildMusicianNamePair(),
     buildMusicianNamePair(),
     buildMusicianNamePair(),
+    buildMusicianNamePair(),
   ],
 );
 // #enddocregion Row
@@ -111,8 +201,23 @@ Widget buildMusicianNamePair() =>
 Column(
   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
   children: [
-    Image.asset('assets/face.png'),
-    Text('Someone'),
+    Card(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusDirectional.circular(109.5)
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Image.asset('assets/face.png'),
+    ),
+    Text(
+      'Someone',
+      style: TextStyle(
+        fontFamily: "Sans",
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.bold,
+        fontSize: 17,
+        color: Color(0xFF2E2F2E),
+      ),
+    ),
   ],
 );
 // #enddocregion Row
