@@ -8,18 +8,18 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  TextStyle style1 = TextStyle(
+  TextStyle boldGrey = TextStyle(
     fontWeight: FontWeight.w900,
     fontSize: 25,
     color: Color(0xFF3E4840),
   );
 
-  TextStyle style2 = TextStyle(
+  TextStyle bold1 = TextStyle(
     fontWeight: FontWeight.w900,
     fontSize: 25,
   );
 
-  TextStyle style3 = TextStyle(
+  TextStyle bold2 = TextStyle(
     fontWeight: FontWeight.w900,
     fontSize: 18,
   );
@@ -45,26 +45,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: <Widget>[
         Container(
             child: Row(
-          children: <Widget>[
-            Text("Profile", style: style1),
-            Container(
-              margin: EdgeInsets.only(left: 250),
-              child: Icon(
-                Icons.settings,
-                size: 40,
-              ),
-            )
-          ],
-        )),
+              children: <Widget>[
+                Text("Profile", style: boldGrey),
+                Container(
+                  margin: EdgeInsets.only(left: 250),
+                  child: Icon(
+                    Icons.settings,
+                    size: 40,
+                  ),
+                )
+              ],
+            )),
         Divider(height: 1.0, thickness: 2, endIndent: 200),
         Container(
           child: Row(
             children: <Widget>[
               Container(
                   child: new CircleAvatar(
-                radius: 61,
-                backgroundImage: AssetImage('assets/face.png'),
-              )),
+                    radius: 61,
+                    backgroundImage: AssetImage('assets/face.png'),
+                  )),
               Container(
                 margin: EdgeInsets.only(left: 30.0, right: 20),
                 child: Column(
@@ -79,7 +79,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           margin: EdgeInsets.only(left: 10),
                           child: Text(
                             "Alice",
-                            style: style2,
+                            style: bold1,
                           ),
                         )
                       ],
@@ -119,7 +119,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: <Widget>[
         Container(
           margin: EdgeInsets.only(top: 20),
-          child: Text("Production", style: style1),
+          child: Text("Production", style: boldGrey),
         ),
         Divider(height: 1.0, thickness: 2, endIndent: 200),
         Container(
@@ -152,7 +152,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: <Widget>[
                 Text(
                   "4,324",
-                  style: style3,
+                  style: bold2,
                 ),
                 Text(
                   "Likes",
@@ -171,7 +171,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: <Widget>[
                 Text(
                   "1,005",
-                  style: style3,
+                  style: bold2,
                 ),
                 Text(
                   "Follows",
@@ -190,7 +190,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: <Widget>[
                 Text(
                   "876",
-                  style: style3,
+                  style: bold2,
                 ),
                 Text(
                   "Following",
