@@ -7,6 +7,7 @@ import 'message_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'trending_screen.dart';
+import 'find_screen.dart';
 
 final _firestore = Firestore.instance;
 FirebaseUser loggedInUser;
@@ -47,7 +48,7 @@ class _MainScreenState extends State<MainScreen> {
   );
   static List<Widget> _widgetOptions = <Widget>[
     TrendingScreen(),
-    SearchScreen(),
+    FindScreen(),
     MessageScreen(),
     Text(
       'Index 3: Me',
