@@ -16,38 +16,34 @@ class _FindScreenState extends State<FindScreen> {
 
 Widget buildColumn() =>
     // #docregion Column
-Column(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    Container(
-        height: 50,
-        child: SearchBar()
-    ),
-    Container(
-        color: Color(0xFFEFF5E9),
-        alignment: Alignment.bottomLeft,
-        height: 26,
-        child: Text(
-          "   Find cooperators",
-          style: TextStyle(
-            fontFamily: "Sans",
-            fontStyle: FontStyle.normal,
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-            color: Color(0xFF282E29),
-          ),
-        )
-    ),
-    Container(
-      height: 200,
-      child: label(),
-    ),
-    Container(
-      height: 260,
-      child: dropdownScreen(),
-    ),
-  ],
-);
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(height: 50, child: SearchBar()),
+        Container(
+            color: Color(0xFFEFF5E9),
+            alignment: Alignment.bottomLeft,
+            height: 26,
+            child: Text(
+              "   Find cooperators",
+              style: TextStyle(
+                fontFamily: "Sans",
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: Color(0xFF282E29),
+              ),
+            )),
+        Container(
+          height: 200,
+          child: label(),
+        ),
+        Container(
+          height: 260,
+          child: dropdownScreen(),
+        ),
+      ],
+    );
 
 class SearchBar extends StatefulWidget {
   @override
@@ -59,16 +55,14 @@ class _SearchBarState extends State<SearchBar> {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusDirectional.circular(29)
-      ),
+          borderRadius: BorderRadiusDirectional.circular(29)),
       clipBehavior: Clip.antiAlias,
-      child:AppBar(
+      child: AppBar(
         backgroundColor: Color(0xFFEFF5E9),
         title: TextField(
           decoration: InputDecoration(
               hintText: 'Search',
-              prefixIcon: Icon(Icons.search, color: Color(0xFF5C5C5C))
-          ),
+              prefixIcon: Icon(Icons.search, color: Color(0xFF5C5C5C))),
           textInputAction: TextInputAction.search,
         ),
       ),
@@ -128,77 +122,82 @@ class labelState extends State<label> {
   }
 }
 
-Widget buildAvatarRow() =>
-    // #docregion Row
-Row(
-  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  children: [
-    buildAvatarNamePair(),
-    buildAvatarNamePair(),
-    buildAvatarNamePair(),
-    Icon(Icons.more_horiz, color: Color(0xFF282E29))
-  ],
-);
-// #enddocregion Row
+Widget buildAvatarRow() => SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          buildAvatarNamePair(),
+          buildAvatarNamePair(),
+          buildAvatarNamePair(),
+          Icon(Icons.more_horiz, color: Color(0xFF282E29))
+        ],
+      ),
+    );
+// #docregion Row
 
 Widget buildAvatarNamePair() =>
     // #docregion Row
-Column(
-  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  children: [
-    Card(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusDirectional.circular(109.5)
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: Image.asset('assets/photo.jpg'),
-    ),
-    Text(
-      'Someone',
-      style: TextStyle(
-        fontFamily: "Sans",
-        fontStyle: FontStyle.normal,
-        fontWeight: FontWeight.bold,
-        fontSize: 12,
-        color: Color(0xFF282E29),
-      ),
-    ),
-  ],
-);
+    Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Card(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadiusDirectional.circular(109.5)),
+          clipBehavior: Clip.antiAlias,
+          child: Image.asset('assets/photo.jpg'),
+        ),
+        Text(
+          'Someone',
+          style: TextStyle(
+            fontFamily: "Sans",
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.bold,
+            fontSize: 12,
+            color: Color(0xFF282E29),
+          ),
+        ),
+      ],
+    );
 // #enddocregion Row
 
 class Item {
-  const Item(this.name,this.icon);
+  const Item(this.name, this.icon);
   final String name;
   final Icon icon;
 }
 
 class dropdownScreen extends StatefulWidget {
-  State createState() =>  dropdownScreenState();
+  State createState() => dropdownScreenState();
 }
 
 class dropdownScreenState extends State<dropdownScreen> {
   Item selectedGenre;
   List<Item> genres = <Item>[
-    const Item('All',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
-    const Item('Blues',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
-    const Item('R&B',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
-    const Item('Jazz',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
-    const Item('Rock',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
-    const Item('Country',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
-    const Item('Soul',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
-    const Item('Dance',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
-    const Item('Hip-hop',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
-    const Item('C-pop',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
-    const Item('Other',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
+    const Item('All', Icon(Icons.arrow_forward_ios, color: Color(0xFF5C5C5C))),
+    const Item(
+        'Blues', Icon(Icons.arrow_forward_ios, color: Color(0xFF5C5C5C))),
+    const Item('R&B', Icon(Icons.arrow_forward_ios, color: Color(0xFF5C5C5C))),
+    const Item('Jazz', Icon(Icons.arrow_forward_ios, color: Color(0xFF5C5C5C))),
+    const Item('Rock', Icon(Icons.arrow_forward_ios, color: Color(0xFF5C5C5C))),
+    const Item(
+        'Country', Icon(Icons.arrow_forward_ios, color: Color(0xFF5C5C5C))),
+    const Item('Soul', Icon(Icons.arrow_forward_ios, color: Color(0xFF5C5C5C))),
+    const Item(
+        'Dance', Icon(Icons.arrow_forward_ios, color: Color(0xFF5C5C5C))),
+    const Item(
+        'Hip-hop', Icon(Icons.arrow_forward_ios, color: Color(0xFF5C5C5C))),
+    const Item(
+        'C-pop', Icon(Icons.arrow_forward_ios, color: Color(0xFF5C5C5C))),
+    const Item(
+        'Other', Icon(Icons.arrow_forward_ios, color: Color(0xFF5C5C5C))),
   ];
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFFEFF5E9),
         title: DropdownButton<Item>(
-          hint:  Text("Select genres"),
+          hint: Text("Select genres"),
           value: selectedGenre,
           onChanged: (Item Value) {
             setState(() {
@@ -206,17 +205,17 @@ class dropdownScreenState extends State<dropdownScreen> {
             });
           },
           items: genres.map((Item genre) {
-            return  DropdownMenuItem<Item>(
+            return DropdownMenuItem<Item>(
               value: genre,
               child: Row(
                 children: <Widget>[
                   genre.icon,
-                  SizedBox(width: 10,),
+                  SizedBox(
+                    width: 10,
+                  ),
                   Text(
                     genre.name,
-                    style:  TextStyle(
-                        color: Color(0xFF5C5C5C)
-                    ),
+                    style: TextStyle(color: Color(0xFF5C5C5C)),
                   ),
                 ],
               ),
@@ -229,8 +228,7 @@ class dropdownScreenState extends State<dropdownScreen> {
   }
 }
 
-Widget buildCoorperationList() =>
-    Column(
+Widget buildCoorperationList() => Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         buildCoorperation(),
@@ -242,29 +240,27 @@ Widget buildCoorperationList() =>
 
 Widget buildCoorperation() =>
     // #docregion Row
-Row(
-  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  children: [
-    Card(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusDirectional.circular(8)
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: Image.asset('assets/music.jpg'),
-    ),
-    buildNameNeedPair(),
-    IconButton (
-      icon: Icon(Icons.person_add, color: Color(0xFF282E29)),
-    ),
-    IconButton (
-      icon: Icon(Icons.more_horiz, color: Color(0xFF282E29)),
-    ),
-  ],
-);
+    Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Card(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadiusDirectional.circular(8)),
+          clipBehavior: Clip.antiAlias,
+          child: Image.asset('assets/music.jpg'),
+        ),
+        buildNameNeedPair(),
+        IconButton(
+          icon: Icon(Icons.person_add, color: Color(0xFF282E29)),
+        ),
+        IconButton(
+          icon: Icon(Icons.more_horiz, color: Color(0xFF282E29)),
+        ),
+      ],
+    );
 // #enddocregion Row
 
-Widget buildNameNeedPair() =>
-    Column(
+Widget buildNameNeedPair() => Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Text(
@@ -289,4 +285,3 @@ Widget buildNameNeedPair() =>
         ),
       ],
     );
-
