@@ -17,20 +17,33 @@ class _FindScreenState extends State<FindScreen> {
 Widget buildColumn() =>
     // #docregion Column
 Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
   children: [
     Container(
         height: 50,
         child: SearchBar()
     ),
     Container(
-        child: Text("Find cooperators")
+        color: Color(0xFFEFF5E9),
+        alignment: Alignment.bottomLeft,
+        height: 26,
+        child: Text(
+          "   Find cooperators",
+          style: TextStyle(
+            fontFamily: "Sans",
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            color: Color(0xFF282E29),
+          ),
+        )
     ),
     Container(
       height: 200,
       child: label(),
     ),
     Container(
-      height: 200,
+      height: 260,
       child: dropdownScreen(),
     ),
   ],
@@ -44,13 +57,20 @@ class SearchBar extends StatefulWidget {
 class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    return Card(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusDirectional.circular(29)
+      ),
+      clipBehavior: Clip.antiAlias,
+      child:AppBar(
+        backgroundColor: Color(0xFFEFF5E9),
         title: TextField(
           decoration: InputDecoration(
-            hintText: 'Search',
-            prefixIcon: Icon(Icons.search, color: Color(0xFF5C5C5C))
+              hintText: 'Search',
+              prefixIcon: Icon(Icons.search, color: Color(0xFF5C5C5C))
           ),
           textInputAction: TextInputAction.search,
+        ),
       ),
     );
   }
@@ -87,9 +107,14 @@ class labelState extends State<label> {
         appBar: TabBar(
           tabs: tabs,
           isScrollable: true,
-          labelColor: Colors.black87,
-          unselectedLabelColor: Colors.blueGrey,
-          labelStyle: new TextStyle(fontSize: 18.0),
+          labelColor: Color(0xFF0B0B0B),
+          unselectedLabelColor: Color(0xFF6D7B6F),
+          labelStyle: TextStyle(
+            fontFamily: "Sans",
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.bold,
+            fontSize: 12,
+          ),
         ),
         body: new TabBarView(
           children: tabs.map((Tab tab) {
@@ -111,7 +136,7 @@ Row(
     buildAvatarNamePair(),
     buildAvatarNamePair(),
     buildAvatarNamePair(),
-    Icon(Icons.more_horiz)
+    Icon(Icons.more_horiz, color: Color(0xFF282E29))
   ],
 );
 // #enddocregion Row
@@ -121,8 +146,23 @@ Widget buildAvatarNamePair() =>
 Column(
   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
   children: [
-    Image.asset('assets/photo.jpg'),
-    Text('Someone'),
+    Card(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusDirectional.circular(109.5)
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Image.asset('assets/photo.jpg'),
+    ),
+    Text(
+      'Someone',
+      style: TextStyle(
+        fontFamily: "Sans",
+        fontStyle: FontStyle.normal,
+        fontWeight: FontWeight.bold,
+        fontSize: 12,
+        color: Color(0xFF282E29),
+      ),
+    ),
   ],
 );
 // #enddocregion Row
@@ -140,22 +180,23 @@ class dropdownScreen extends StatefulWidget {
 class dropdownScreenState extends State<dropdownScreen> {
   Item selectedGenre;
   List<Item> genres = <Item>[
-    const Item('All',Icon(Icons.arrow_forward_ios,color:  Colors.blueGrey,)),
-    const Item('Blues',Icon(Icons.arrow_forward_ios,color:  Colors.blueGrey,)),
-    const Item('R&B',Icon(Icons.arrow_forward_ios,color:  Colors.blueGrey,)),
-    const Item('Jazz',Icon(Icons.arrow_forward_ios,color:  Colors.blueGrey,)),
-    const Item('Rock',Icon(Icons.arrow_forward_ios,color:  Colors.blueGrey,)),
-    const Item('Country',Icon(Icons.arrow_forward_ios,color:  Colors.blueGrey,)),
-    const Item('Soul',Icon(Icons.arrow_forward_ios,color:  Colors.blueGrey,)),
-    const Item('Dance',Icon(Icons.arrow_forward_ios,color:  Colors.blueGrey,)),
-    const Item('Hip-hop',Icon(Icons.arrow_forward_ios,color:  Colors.blueGrey,)),
-    const Item('C-pop',Icon(Icons.arrow_forward_ios,color:  Colors.blueGrey,)),
-    const Item('Other',Icon(Icons.arrow_forward_ios,color:  Colors.blueGrey,)),
+    const Item('All',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
+    const Item('Blues',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
+    const Item('R&B',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
+    const Item('Jazz',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
+    const Item('Rock',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
+    const Item('Country',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
+    const Item('Soul',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
+    const Item('Dance',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
+    const Item('Hip-hop',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
+    const Item('C-pop',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
+    const Item('Other',Icon(Icons.arrow_forward_ios,color:  Color(0xFF5C5C5C))),
   ];
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFFEFF5E9),
         title: DropdownButton<Item>(
           hint:  Text("Select genres"),
           value: selectedGenre,
@@ -173,7 +214,9 @@ class dropdownScreenState extends State<dropdownScreen> {
                   SizedBox(width: 10,),
                   Text(
                     genre.name,
-                    style:  TextStyle(color: Colors.black87),
+                    style:  TextStyle(
+                        color: Color(0xFF5C5C5C)
+                    ),
                   ),
                 ],
               ),
@@ -193,6 +236,7 @@ Widget buildCoorperationList() =>
         buildCoorperation(),
         buildCoorperation(),
         buildCoorperation(),
+        buildCoorperation(),
       ],
     );
 
@@ -201,13 +245,19 @@ Widget buildCoorperation() =>
 Row(
   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
   children: [
-    Image.asset('assets/music.jpg'),
+    Card(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusDirectional.circular(8)
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Image.asset('assets/music.jpg'),
+    ),
     buildNameNeedPair(),
     IconButton (
-      icon: Icon(Icons.person_add, color: Colors.blueGrey,),
+      icon: Icon(Icons.person_add, color: Color(0xFF282E29)),
     ),
     IconButton (
-      icon: Icon(Icons.more_horiz, color: Colors.blueGrey,),
+      icon: Icon(Icons.more_horiz, color: Color(0xFF282E29)),
     ),
   ],
 );
@@ -217,8 +267,26 @@ Widget buildNameNeedPair() =>
     Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Text('Someone'),
-        Text('looking for a composer')
+        Text(
+          'Someone',
+          style: TextStyle(
+            fontFamily: "Sans",
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.bold,
+            fontSize: 12,
+            color: Color(0xFF282E29),
+          ),
+        ),
+        Text(
+          'Looking for a composer',
+          style: TextStyle(
+            fontFamily: "Sans",
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.bold,
+            fontSize: 12,
+            color: Color(0xFF282E29),
+          ),
+        ),
       ],
     );
 

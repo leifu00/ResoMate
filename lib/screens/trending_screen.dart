@@ -27,11 +27,11 @@ Column(
         child: Text(
           "TOP MUSIC",
           style: TextStyle(
-              fontFamily: "Sans",
-              fontStyle: FontStyle.normal,
-              fontWeight: FontWeight.w900,
-              fontSize: 24,
-              color: Color(0xFF3E4840),
+            fontFamily: "Sans",
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.w900,
+            fontSize: 24,
+            color: Color(0xFF3E4840),
           ),
         )
     ),
