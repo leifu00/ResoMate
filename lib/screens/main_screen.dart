@@ -6,6 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'message_screen.dart';
 import 'package:provider/provider.dart';
 
+import 'trending_screen.dart';
+
 final _firestore = Firestore.instance;
 FirebaseUser loggedInUser;
 
@@ -44,10 +46,7 @@ class _MainScreenState extends State<MainScreen> {
     fontWeight: FontWeight.bold,
   );
   static List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+    TrendingScreen(),
     SearchScreen(),
     MessageScreen(),
     Text(
