@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 class ProfileScreen extends StatefulWidget {
   static const String id = 'profile_screen';
 
-
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
   TextStyle style1 = TextStyle(
     fontWeight: FontWeight.w900,
     fontSize: 25,
@@ -33,45 +31,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-              children: <Widget>[
-                buildProfile(),
-                buildProduction(),
-              ]
-          ),
+      padding: EdgeInsets.all(16.0),
+      child: Column(children: <Widget>[
+        buildProfile(),
+        buildProduction(),
+      ]),
     );
   }
 
-  Widget buildProfile(){
+  Widget buildProfile() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-          child: Row(
-            children: <Widget>[
-              Text(
-                  "Profile",
-                  style: style1
+            child: Row(
+          children: <Widget>[
+            Text("Profile", style: style1),
+            Container(
+              margin: EdgeInsets.only(left: 250),
+              child: Icon(
+                Icons.settings,
+                size: 40,
               ),
-              Container(
-                margin: EdgeInsets.only(left: 250),
-                child: Icon(Icons.settings, size: 40,),
-              )
-
-            ],
-          )
-        ),
-        Divider(height: 1.0, thickness: 2,endIndent: 200),
+            )
+          ],
+        )),
+        Divider(height: 1.0, thickness: 2, endIndent: 200),
         Container(
           child: Row(
             children: <Widget>[
               Container(
                   child: new CircleAvatar(
-                    radius: 61,
-                    backgroundImage: AssetImage('assets/face.png'),
-                  )
-              ),
+                radius: 61,
+                backgroundImage: AssetImage('assets/face.png'),
+              )),
               Container(
                 margin: EdgeInsets.only(left: 30.0, right: 20),
                 child: Column(
@@ -89,11 +82,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             style: style2,
                           ),
                         )
-
                       ],
                     ),
-                    Text("MV producer", style: defaultStyle,),
-                    Text("London UK", style: defaultStyle,),
+                    Text(
+                      "MV producer",
+                      style: defaultStyle,
+                    ),
+                    Text(
+                      "London UK",
+                      style: defaultStyle,
+                    ),
                   ],
                 ),
               )
@@ -109,12 +107,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 height: 80,
                 width: 400,
                 child: buildStatisticsTable(),
-              )
-          ),
+              )),
         )
-
-
-
       ],
     );
   }
@@ -125,12 +119,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: <Widget>[
         Container(
           margin: EdgeInsets.only(top: 20),
-          child: Text(
-              "Production",
-              style: style1
-          ),
+          child: Text("Production", style: style1),
         ),
-        Divider(height: 1.0, thickness: 2,endIndent: 200),
+        Divider(height: 1.0, thickness: 2, endIndent: 200),
         Container(
           margin: EdgeInsets.only(top: 20),
           child: Column(
@@ -140,13 +131,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Container(
                     height: 80,
                     width: 80,
-                    child: new Image.asset(
-                        'assets/4.png'
-                    ),
-                  )
-              ),
+                    child: new Image.asset('assets/4.png'),
+                  )),
               Text("Flower dance"),
-
             ],
           ),
         )
@@ -168,11 +155,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   "4,324",
                   style: style3,
                 ),
-                Text("Likes", style: defaultStyle,),
+                Text(
+                  "Likes",
+                  style: defaultStyle,
+                ),
               ],
             ),
           ),
-          VerticalDivider(width: 1.0, thickness: 2,endIndent: 20,),
+          VerticalDivider(
+            width: 1.0,
+            thickness: 2,
+            endIndent: 20,
+          ),
           Container(
             child: Column(
               children: <Widget>[
@@ -180,11 +174,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   "1,005",
                   style: style3,
                 ),
-                Text("Follows", style: defaultStyle,),
+                Text(
+                  "Follows",
+                  style: defaultStyle,
+                ),
               ],
             ),
           ),
-          VerticalDivider(width: 1.0, thickness: 2,endIndent: 20,),
+          VerticalDivider(
+            width: 1.0,
+            thickness: 2,
+            endIndent: 20,
+          ),
           Container(
             child: Column(
               children: <Widget>[
@@ -192,13 +193,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   "876",
                   style: style3,
                 ),
-                Text("Following", style: defaultStyle,),
+                Text(
+                  "Following",
+                  style: defaultStyle,
+                ),
               ],
             ),
           ),
         ],
       ),
     );
-
   }
 }
