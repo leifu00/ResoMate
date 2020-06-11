@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:resomate/screens/copyright_screen.dart';
 
 class TrendingScreen extends StatefulWidget {
   static const String id = 'trending_screen';
@@ -8,9 +9,12 @@ class TrendingScreen extends StatefulWidget {
   _TrendingScreenState createState() => _TrendingScreenState();
 }
 
+BuildContext main_context;
+
 class _TrendingScreenState extends State<TrendingScreen> {
   @override
   Widget build(BuildContext context) {
+    main_context = context;
     return Container(child: buildColumn());
   }
 }
@@ -123,11 +127,14 @@ Widget buildMusicCoverNamePair() =>
     Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Card(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadiusDirectional.circular(18)),
-          clipBehavior: Clip.antiAlias,
-          child: Image.asset('assets/music_cover.jpg'),
+        GestureDetector(
+          onTap: () => Navigator.pushNamed(main_context, CopyRightScreen.id),
+          child: Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadiusDirectional.circular(18)),
+            clipBehavior: Clip.antiAlias,
+            child: Image.asset('assets/music_cover.jpg'),
+          ),
         ),
         Text(
           'Some Music',

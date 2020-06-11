@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'upload_screen.dart';
 import 'package:resomate/components/posts_list.dart';
 import 'package:filter_list/filter_list.dart';
 
@@ -118,17 +117,17 @@ class _SearchScreenState extends State<SearchScreen>
                 backgroundColor: Colors.grey,
                 child: Icon(Icons.add),
                 onPressed: () {
-                  showModalBottomSheet(
-                    context: context,
-                    builder: (context) => SingleChildScrollView(
-                      child: Container(
-                        padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).viewInsets.bottom,
-                        ),
-                        child: UploadScreen(),
-                      ),
-                    ),
-                  );
+//                  showModalBottomSheet(
+//                    context: context,
+//                    builder: (context) => SingleChildScrollView(
+//                      child: Container(
+//                        padding: EdgeInsets.only(
+//                          bottom: MediaQuery.of(context).viewInsets.bottom,
+//                        ),
+//                        child: UploadScreen(),
+//                      ),
+//                    ),
+//                  );
                 }),
           ],
         ),

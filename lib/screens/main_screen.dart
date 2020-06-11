@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resomate/models/user_data.dart';
+import 'package:resomate/screens/profile_screen.dart';
+import 'package:resomate/screens/upload_screen.dart';
 import 'search_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -49,11 +51,9 @@ class _MainScreenState extends State<MainScreen> {
   static List<Widget> _widgetOptions = <Widget>[
     TrendingScreen(),
     FindScreen(),
+    UploadScreen(),
     MessageScreen(),
-    Text(
-      'Index 3: Me',
-      style: optionStyle,
-    ),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -68,9 +68,10 @@ class _MainScreenState extends State<MainScreen> {
       backgroundColor: Color(0xFFFAFAFA),
       appBar: AppBar(
         backgroundColor: Color(0xFF4C6056),
-        leading: Icon(Icons.graphic_eq,
-            color: Color(0xFFFFFFFF),
-            size: 35,
+        leading: Icon(
+          Icons.graphic_eq,
+          color: Color(0xFFFFFFFF),
+          size: 35,
         ),
       ),
       body: Center(
@@ -85,6 +86,10 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
             title: Text('Find'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.file_upload),
+            title: Text('Upload'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),
