@@ -55,6 +55,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/fonts/music_sample.jpg
 
   fonts:
     - family: Sans
