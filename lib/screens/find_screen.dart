@@ -254,14 +254,14 @@ Widget buildCoorperation() =>
           icon: Icon(Icons.person_add, color: Color(0xFF282E29)),
         ),
         IconButton(
-          icon: Icon(Icons.more_horiz, color: Color(0xFF282E29)),
+          icon: Icon(Icons.message, color: Color(0xFF282E29)),
         ),
       ],
     );
 // #enddocregion Row
 
 Widget buildNameNeedPair() => Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Someone',
