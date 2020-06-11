@@ -76,15 +76,7 @@ Widget buildColumn() =>
         Container(
           color: Color(0xFFEFF5E9),
           child: buildGoldenMusiciansColumn(),
-        ),
-        Container(
-          height: 5,
-          color: Color(0xFF3E4840),
-        ),
-        Container(
-          height: 5,
-          color: Color(0xFF29E88C),
-        ),
+        )
       ],
     );
 // #enddocregion Column

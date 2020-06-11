@@ -68,7 +68,10 @@ class _MainScreenState extends State<MainScreen> {
       backgroundColor: Color(0xFFFAFAFA),
       appBar: AppBar(
         backgroundColor: Color(0xFF4C6056),
-        leading: Icon(Icons.graphic_eq, color: Color(0xFFFFFFFF),),
+        leading: Icon(Icons.graphic_eq,
+            color: Color(0xFFFFFFFF),
+            size: 35,
+        ),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
