@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resomate/components/cooperators_list.dart';
 
 class FindScreen extends StatefulWidget {
   static const String id = 'find_screen';
@@ -113,7 +114,9 @@ class labelState extends State<label> {
         body: new TabBarView(
           children: tabs.map((Tab tab) {
             return new Center(
-              child: buildAvatarRow(),
+              child: CooperatorsList(
+                type: tab.text,
+              ),
             );
           }).toList(),
         ),
@@ -122,17 +125,6 @@ class labelState extends State<label> {
   }
 }
 
-Widget buildAvatarRow() => SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          buildAvatarNamePair(),
-          buildAvatarNamePair(),
-          buildAvatarNamePair(),
-          Icon(Icons.more_horiz, color: Color(0xFF282E29))
-        ],
-      ),
-    );
 // #docregion Row
 
 Widget buildAvatarNamePair() =>
