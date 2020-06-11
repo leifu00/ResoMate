@@ -8,34 +8,34 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  TextStyle boldGrey = TextStyle(
-    fontWeight: FontWeight.w900,
-    fontSize: 25,
-    color: Color(0xFF3E4840),
-  );
-
   TextStyle bold1 = TextStyle(
     fontWeight: FontWeight.w900,
-    fontSize: 25,
+    fontSize: 22,
+    color: Color(0xFF282E29),
   );
 
   TextStyle bold2 = TextStyle(
     fontWeight: FontWeight.w900,
     fontSize: 18,
+    color: Color(0xFF282E29),
   );
 
   TextStyle defaultStyle = TextStyle(
     fontSize: 16,
+    color: Color(0xFF282E29),
   );
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(16.0),
-      child: Column(children: <Widget>[
-        buildProfile(),
-        buildProduction(),
-      ]),
+    return Container(
+      color: Color(0xFFFAFAFA),
+      child: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(children: <Widget>[
+          buildProfile(),
+          buildProduction(),
+        ]),
+      ),
     );
   }
 
@@ -45,25 +45,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: <Widget>[
         Container(
             child: Row(
-              children: <Widget>[
-                Text("Profile", style: boldGrey),
-                Container(
-                  margin: EdgeInsets.only(left: 250),
-                  child: Icon(
-                    Icons.settings,
-                    size: 40,
-                  ),
-                )
-              ],
-            )),
-        Divider(height: 1.0, thickness: 2, endIndent: 200),
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            Text("Profile", style: bold1),
+            Container(
+              margin: EdgeInsets.only(left: 250),
+              child: Icon(
+                Icons.settings,
+                size: 40,
+                color: Color(0xFF282E29),
+              ),
+            )
+          ],
+        )),
+        Divider(height: 1.0, thickness: 2, endIndent: 220),
         Container(
           child: Row(
             children: <Widget>[
               Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Color(0xFFD1D1D1),
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(61),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xFFD1D1D1),
+                          offset: Offset(0, 4),
+                          blurRadius: 5,
+                        ),
+                      ]),
+                  margin: EdgeInsets.only(top: 7),
                   child: new CircleAvatar(
                     radius: 61,
-                    backgroundImage: AssetImage('assets/face.png'),
+                    backgroundImage: AssetImage('assets/pig.jpg'),
                   )),
               Container(
                 margin: EdgeInsets.only(left: 30.0, right: 20),
@@ -73,10 +89,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Row(
                       children: <Widget>[
                         Container(
-                          child: Icon(Icons.border_color),
+                          child: Icon(
+                            Icons.border_color,
+                            color: Color(0xFF282E29),
+                            size: 20,
+                          ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 10),
+                          margin: EdgeInsets.only(left: 7),
                           child: Text(
                             "Alice",
                             style: bold1,
@@ -99,13 +119,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: 20),
+          margin: EdgeInsets.only(
+            top: 15,
+            left: 10,
+            right: 10,
+          ),
           child: new ClipRRect(
-              borderRadius: BorderRadius.circular(25.0),
+              borderRadius: BorderRadius.circular(20.0),
               child: Container(
                 color: Color(0xFFEFF5E9),
                 height: 80,
-                width: 400,
                 child: buildStatisticsTable(),
               )),
         )
@@ -119,19 +142,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: <Widget>[
         Container(
           margin: EdgeInsets.only(top: 20),
-          child: Text("Production", style: boldGrey),
+          child: Text("Production", style: bold1),
         ),
-        Divider(height: 1.0, thickness: 2, endIndent: 200),
+        Divider(height: 1.0, thickness: 2, endIndent: 220),
         Container(
-          margin: EdgeInsets.only(top: 20),
+          margin: EdgeInsets.only(top: 10),
           child: Column(
             children: <Widget>[
               new ClipRRect(
-                  borderRadius: BorderRadius.circular(25.0),
+                  borderRadius: BorderRadius.circular(20.0),
                   child: Container(
-                    height: 80,
-                    width: 80,
-                    child: new Image.asset('assets/4.png'),
+                    height: 102,
+                    width: 96,
+                    child: new Image.asset('assets/song1.jpg'),
                   )),
               Text("Flower dance"),
             ],
@@ -143,7 +166,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget buildStatisticsTable() {
     return Container(
-      margin: EdgeInsets.only(top: 25),
+      margin: EdgeInsets.only(top: 18),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
@@ -204,3 +227,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
+
