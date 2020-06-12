@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class UploadMusicPostFinish extends StatefulWidget {
-  static const String id = 'profile_screen';
 
   @override
   _UploadMusicPostFinishState createState() => _UploadMusicPostFinishState();
@@ -51,9 +50,9 @@ class _UploadMusicPostFinishState extends State<UploadMusicPostFinish> {
           ),
         ),
         Positioned(
-          height: 150,
+          height: 155,
           bottom: 0,
-          child: Image.asset("assets/background.png"),
+          child: Image.asset("assets/background_2.png"),
         )
       ],
     );
@@ -64,10 +63,7 @@ class _UploadMusicPostFinishState extends State<UploadMusicPostFinish> {
       children: <Widget>[
         Container(
           margin: EdgeInsets.only(top: 200),
-          child: Icon(
-            Icons.graphic_eq,
-            size: 60,
-          ),
+          child: Icon(Icons.graphic_eq, size: 60,),
         ),
         Container(
           margin: EdgeInsets.only(top: 30),
@@ -76,6 +72,7 @@ class _UploadMusicPostFinishState extends State<UploadMusicPostFinish> {
             style: bold1,
           ),
         ),
+
       ],
     );
   }
