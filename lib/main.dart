@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:resomate/screens/copyright_screen.dart';
+import 'package:resomate/screens/play_music_screen.dart';
 import 'package:resomate/screens/post_screen1.dart';
 import 'package:resomate/screens/profile_screen.dart';
 import 'package:resomate/screens/regisration_screen.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => UserData(),
       child: MaterialApp(
-        initialRoute: MainScreen.id,
+        initialRoute: PlayMusicScreen.id,
         routes: {
           PostScreen1.id: (context) => PostScreen1(),
           CopyRightScreen.id: (context) => CopyRightScreen(),
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
           MainScreen.id: (context) => MainScreen(),
           ChatScreen.id: (context) => ChatScreen(),
           RegistrationScreen.id: (context) => RegistrationScreen(),
+          PlayMusicScreen.id: (context) => PlayMusicScreen(),
         },
       ),
     );
