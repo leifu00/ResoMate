@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => UserData(),
       child: MaterialApp(
-        initialRoute: PlayMusicScreen.id,
+        initialRoute: MainScreen.id,
         routes: {
           PostScreen1.id: (context) => PostScreen1(),
           CopyRightScreen.id: (context) => CopyRightScreen(),

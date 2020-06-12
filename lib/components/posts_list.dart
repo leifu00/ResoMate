@@ -5,22 +5,11 @@ import 'package:resomate/screens/chat_screen.dart';
 import 'package:provider/provider.dart';
 
 final _firestore = Firestore.instance;
-List<Icon> icons = [
-  Icon(Icons.music_note),
-  Icon(Icons.movie),
-  Icon(Icons.create),
-];
-
-List<String> types = [
-  'singer',
-  'MV Producer',
-  'composer',
-];
 
 class PostsList extends StatefulWidget {
-  final int type;
+  final String genre;
 
-  const PostsList({Key key, this.type}) : super(key: key);
+  const PostsList({Key key, this.genre}) : super(key: key);
 
   @override
   _PostsListState createState() => _PostsListState();
@@ -29,29 +18,16 @@ class PostsList extends StatefulWidget {
 class _PostsListState extends State<PostsList> {
   @override
   Widget build(BuildContext context) {
-//    return ListView.builder(
-//      itemBuilder: (context, index) {
-//        return Text(posts[index]);
-//      },
-//      itemCount: 3,
-//    );
     return PostsStream(
-      type: widget.type,
+      genre: widget.genre,
     );
-//    return Column(
-//      mainAxisAlignment: MainAxisAlignment.start,
-//      crossAxisAlignment: CrossAxisAlignment.stretch,
-//      children: <Widget>[
-//        PostsStream(),
-//      ],
-//    );
   }
 }
 
 class PostsStream extends StatelessWidget {
-  final int type;
+  final String genre;
 
-  const PostsStream({Key key, this.type}) : super(key: key);
+  const PostsStream({Key key, this.genre}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -68,49 +44,66 @@ class PostsStream extends StatelessWidget {
         final posts = snapshot.data.documents.reversed;
         List<Widget> postsList = [];
         for (var post in posts) {
-          if (post.data['email'] == context.watch<UserData>().myEmail) {
+          if (post.data['genre'] != genre && genre != 'All') {
             continue;
           }
-          if (post.data['type'] != type) {
-            continue;
-          }
-          postsList.add(Container(
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(),
+          postsList.add(Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: <Widget>[
+                  Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadiusDirectional.circular(8)),
+                    clipBehavior: Clip.antiAlias,
+                    child: Image.asset('assets/music.jpg'),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        post.data['name'],
+                        style: TextStyle(
+                          fontFamily: "Sans",
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                          color: Color(0xFF282E29),
+                        ),
+                      ),
+                      Text(
+                        post.data['post'],
+                        style: TextStyle(
+                          fontFamily: "Sans",
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                          color: Color(0xFF282E29),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ),
-            child: ListTile(
-                leading: icons[post.data['type']],
-                onTap: () {
-                  context
-                      .read<UserData>()
-                      .setCurrentChatWIth(post.data['email']);
-                  Navigator.pushNamed(context, ChatScreen.id);
-                },
-                title: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      post.data['email'],
-                      style: TextStyle(fontSize: 12),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Looking for a ${types[post.data['type']]}',
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ],
-                )),
+              Row(
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.person_add, color: Color(0xFF282E29)),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.message, color: Color(0xFF282E29)),
+                  ),
+                ],
+              ),
+            ],
           ));
         }
-        return ListView(
-          children: ListTile.divideTiles(
-            context: context,
-            tiles: postsList,
-          ).toList(),
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: postsList,
         );
       },
     );

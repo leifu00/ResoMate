@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resomate/components/cooperators_list.dart';
+import 'package:resomate/components/posts_list.dart';
 
 class FindScreen extends StatefulWidget {
   static const String id = 'find_screen';
@@ -183,6 +184,9 @@ class dropdownScreenState extends State<dropdownScreen> {
     const Item(
         'Other', Icon(Icons.arrow_forward_ios, color: Color(0xFF5C5C5C))),
   ];
+
+  String selected = 'All';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -193,6 +197,7 @@ class dropdownScreenState extends State<dropdownScreen> {
           value: selectedGenre,
           onChanged: (Item Value) {
             setState(() {
+              selected = Value.name;
               selectedGenre = Value;
             });
           },
@@ -215,20 +220,12 @@ class dropdownScreenState extends State<dropdownScreen> {
           }).toList(),
         ),
       ),
-      body: buildCoorperationList(),
+      body: PostsList(
+        genre: selected,
+      ),
     );
   }
 }
-
-Widget buildCoorperationList() => Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        buildCoorperation(),
-        buildCoorperation(),
-        buildCoorperation(),
-        buildCoorperation(),
-      ],
-    );
 
 Widget buildCoorperation() =>
     // #docregion Row

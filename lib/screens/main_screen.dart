@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:resomate/models/user_data.dart';
 import 'package:resomate/screens/profile_screen.dart';
 import 'package:resomate/screens/upload_screen.dart';
-import 'search_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'message_screen.dart';
