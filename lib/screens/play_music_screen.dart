@@ -36,31 +36,46 @@ Column(
   children: [
     Container(
         width: double.infinity,
-        height: 78.73,
+        height: 130,
         child: buildAvatarDescriptionPair(),
-        padding: EdgeInsets.fromLTRB(21,21,21,10),
+        padding: EdgeInsets.fromLTRB(21,21,21,21),
     ),
     Container(
-      width: 323,
+      width: double.infinity,
       height: 222,
       child: Icon(
-          Icons.play_circle_filled
+        Icons.play_circle_filled,
+        color: Color(0xF0282E29),
+        size: 80,
       ),
-      padding: EdgeInsets.fromLTRB(20,20,20,20),
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(new Radius.circular(44)),
         image: DecorationImage(
           image: AssetImage("assets/song1.jpg"),
         )
       ),
     ),
     Container(
+        width: double.infinity,
         child: buildTitleIconPair(),
+        padding: EdgeInsets.fromLTRB(21,0,21,21),
     ),
     Container(
+        width: double.infinity,
+        color: Color(0xFFE2EDE6),
         child: buildIconLikePair(),
+        margin: EdgeInsets.fromLTRB(21,0,21,0),
     ),
     Container(
+        height: 2,
+        color: Color(0xFFD1D1D1),
+        margin: EdgeInsets.fromLTRB(21,0,21,0),
+    ),
+    Container(
+        width: double.infinity,
+        color: Color(0xFFE2EDE6),
         child: buildCommentColumn(),
+        margin: EdgeInsets.fromLTRB(21,0,21,0),
     ),
   ],
 );
@@ -77,6 +92,7 @@ Widget buildAvatarDescriptionPair() => Row(
     ),
     Container(
       child: buildNameDescriptionPair(),
+      padding: EdgeInsets.fromLTRB(10,10,10,10),
     ),
   ],
 );
@@ -87,17 +103,20 @@ Widget buildNameDescriptionPair() => Column(
     Container(
       child: buildNameAddPair(),
     ),
-    Text(
-      'This is my final piece of work with Bob! Hope you enjoy! :)',
-      style: TextStyle(
-        fontFamily: "Sans",
-        fontStyle: FontStyle.normal,
-        fontWeight: FontWeight.bold,
-        fontSize: 12,
-        color: Color(0xFF282E29),
+    Container(
+      width: 260,
+      child: Text(
+        'This is my final piece of work with Bob! Hope you enjoy! :)',
+        style: TextStyle(
+          fontFamily: "Sans",
+          fontStyle: FontStyle.normal,
+          fontWeight: FontWeight.w500,
+          fontSize: 14,
+          color: Color(0xFF000000),
+        ),
+        softWrap: true,
       ),
-      softWrap: true,
-    ),
+    )
   ],
 );
 
@@ -105,21 +124,21 @@ Widget buildNameAddPair() => Row(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
     Text(
-      'Alice',
+      'Alice ',
       style: TextStyle(
         fontFamily: "Sans",
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.bold,
-        fontSize: 12,
+        fontSize: 18,
         color: Color(0xFF282E29),
       ),
     ),
-    Icon(Icons.group_add),
+    Icon(Icons.group_add, color: Color(0xFF282E29)),
   ],
 );
 
 Widget buildTitleIconPair() => Row(
-  mainAxisAlignment: MainAxisAlignment.spaceAround,
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
   children: [
     Container(
       child: buildTitleNamePair(),
@@ -139,7 +158,7 @@ Widget buildTitleNamePair() => Column(
         fontFamily: "Sans",
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.bold,
-        fontSize: 12,
+        fontSize: 18,
         color: Color(0xFF282E29),
       ),
       softWrap: true,
@@ -150,8 +169,8 @@ Widget buildTitleNamePair() => Column(
         fontFamily: "Sans",
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.bold,
-        fontSize: 12,
-        color: Color(0xFF282E29),
+        fontSize: 13,
+        color: Color(0xFF828282),
       ),
       softWrap: true,
     ),
@@ -161,16 +180,16 @@ Widget buildTitleNamePair() => Column(
 Widget buildIconRow() => Row(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
-    Icon(Icons.favorite),
-    Icon(Icons.textsms),
-    Icon(Icons.more_horiz),
+    Icon(Icons.favorite, color: Color(0xFF282E29)),
+    Icon(Icons.textsms, color: Color(0xFF282E29)),
+    Icon(Icons.more_horiz, color: Color(0xFF282E29)),
   ],
 );
 
 Widget buildIconLikePair() => Row(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
-    Icon(Icons.favorite),
+    Icon(Icons.favorite_border, color: Color(0xFFFF3232), size: 15,),
     Text(
       '30 likes',
       style: TextStyle(
@@ -178,7 +197,7 @@ Widget buildIconLikePair() => Row(
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.bold,
         fontSize: 12,
-        color: Color(0xFF282E29),
+        color: Color(0xFF000000),
       ),
       softWrap: true,
     ),
@@ -195,7 +214,7 @@ Widget buildCommentColumn() => Column(
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.bold,
         fontSize: 12,
-        color: Color(0xFF282E29),
+        color: Color(0xFF000000),
       ),
       softWrap: true,
     ),
@@ -206,7 +225,7 @@ Widget buildCommentColumn() => Column(
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.bold,
         fontSize: 12,
-        color: Color(0xFF282E29),
+        color: Color(0xFF000000),
       ),
       softWrap: true,
     ),
