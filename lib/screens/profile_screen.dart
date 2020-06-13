@@ -45,19 +45,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: <Widget>[
         Container(
             child: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            Text("Profile", style: bold1),
-            Container(
-              margin: EdgeInsets.only(left: 200),
-              child: Icon(
-                Icons.settings,
-                size: 40,
-                color: Color(0xFF282E29),
-              ),
-            )
-          ],
-        )),
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                Text("Profile", style: bold1),
+                Container(
+                  margin: EdgeInsets.only(left: 250),
+                  child: Icon(
+                    Icons.settings,
+                    size: 40,
+                    color: Color(0xFF282E29),
+                  ),
+                )
+              ],
+            )),
         Divider(height: 1.0, thickness: 2, endIndent: 220),
         Container(
           child: Row(
@@ -112,6 +112,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       "London UK",
                       style: defaultStyle,
                     ),
+                    Container(
+                      margin: EdgeInsets.only(top: 10),
+                      child: Text(
+                        "self introduction",
+                        style: defaultStyle,
+                      ),
+                    ),
+
                   ],
                 ),
               )
@@ -131,6 +139,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 height: 80,
                 child: buildStatisticsTable(),
               )),
+        ),
+        Container(
+          margin: EdgeInsets.only(top: 10),
+          child: Row(
+            children: <Widget>[
+              buildTag("Jazz"),
+              buildTag("London"),
+            ],
+          ),
         )
       ],
     );
@@ -141,7 +158,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-          margin: EdgeInsets.only(top: 20),
+          margin: EdgeInsets.only(top: 10),
           child: Text("Production", style: bold1),
         ),
         Divider(height: 1.0, thickness: 2, endIndent: 220),
@@ -152,6 +169,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               new ClipRRect(
                   borderRadius: BorderRadius.circular(20.0),
                   child: Container(
+                    color: Color(0xFFE2E2E2),
                     height: 102,
                     width: 96,
                     child: new Image.asset('assets/song1.jpg'),
@@ -159,7 +177,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Text("Flower dance"),
             ],
           ),
-        )
+        ),
       ],
     );
   }
@@ -224,6 +242,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget buildTag(String str) {
+    return Container(
+      margin: EdgeInsets.only(left: 10),
+      child: Text("#" + str, style: defaultStyle,),
     );
   }
 }
