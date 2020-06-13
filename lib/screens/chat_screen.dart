@@ -70,7 +70,8 @@ class _ChatScreenState extends State<ChatScreen> {
           children: <Widget>[
             MessagesStream(),
             Container(
-              decoration: kMessageContainerDecoration,
+              color: Color(0xFFD1D1D1),
+//               decoration: kMessageContainerDecoration,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
