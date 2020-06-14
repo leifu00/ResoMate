@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:resomate/screens/upload_music_screen1.dart';
+import 'package:resomate/screens/upload_music_screen2.dart';
+import 'package:resomate/screens/upload_music_screen3.dart';
+import 'package:resomate/screens/upload_music_screen4.dart';
+import 'package:provider/provider.dart';
+import 'package:resomate/models/user_data.dart';
+import 'package:resomate/screens/upload_music_screen5.dart';
 
 void main() => runApp(UploadScreen());
 
 class UploadScreen extends StatefulWidget {
+  static String id = 'upload_screen';
+
   @override
   State<StatefulWidget> createState() {
     return _UploadScreenState();
@@ -28,21 +37,30 @@ class _UploadScreenState extends State<UploadScreen> {
     child: Icon(Icons.slideshow, color: Color(0xFF2E2F2E), size: 60),
   );
 
+  List<Widget> pages = [
+    UploadMusicMp3Black(),
+    UploadMusicType(),
+    UploadMusicCoorp(),
+    UploadMusicPost(),
+    UploadMusicPostFinish(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return ListView(
-      children: <Widget>[
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            oneUpload(context, "Music", music_icon),
-            oneUpload(context, "MV", mv_icon),
-            oneUpload(context, "Lyrics", lyric_icon),
-          ],
-        )
-      ],
-    );
+    return context.watch<UserData>().uploadMusicStep < 0
+        ? ListView(
+            children: <Widget>[
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  oneUpload(context, "Music", music_icon),
+                  oneUpload(context, "MV", mv_icon),
+                  oneUpload(context, "Lyrics", lyric_icon),
+                ],
+              )
+            ],
+          )
+        : pages[context.watch<UserData>().uploadMusicStep];
   }
 
   Container oneUpload(BuildContext context, String text, Container container) {
@@ -107,7 +125,9 @@ class _UploadScreenState extends State<UploadScreen> {
                 ),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              context.read<UserData>().setUploadMusicStep(0);
+            },
           ),
         ],
       ),
