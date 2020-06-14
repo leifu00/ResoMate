@@ -16,10 +16,68 @@ class PlayMusicScreen extends StatefulWidget {
 BuildContext main_context;
 
 class _PlayMusicScreenState extends State<PlayMusicScreen> {
-  static String url =
-      'https://codingwithjoe.com/wp-content/uploads/2018/03/applause.mp3';
+  static String url = main_context.watch<UserData>().currentUrl;
   AudioPlayer audioPlayer = new AudioPlayer();
   AudioProvider audioProvider = new AudioProvider(url);
+
+  play() async {
+    String localUrl = await audioProvider.load();
+    audioPlayer.play(localUrl, isLocal: true);
+  }
+
+  Widget buildColumn() =>
+      // #docregion Column
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: double.infinity,
+            height: 130,
+            child: buildAvatarDescriptionPair(),
+            padding: EdgeInsets.fromLTRB(21, 21, 21, 21),
+          ),
+          Container(
+            width: double.infinity,
+            height: 222,
+            child: GestureDetector(
+              onTap: play,
+              child: Icon(
+                Icons.play_circle_filled,
+                color: Color(0xF0282E29),
+                size: 80,
+              ),
+            ),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(new Radius.circular(44)),
+                image: DecorationImage(
+                  image: AssetImage('assets/song1.jpg'),
+                )),
+          ),
+          Container(
+            width: double.infinity,
+            child: buildTitleIconPair(),
+            padding: EdgeInsets.fromLTRB(21, 0, 21, 21),
+          ),
+          Container(
+            width: double.infinity,
+            color: Color(0xFFE2EDE6),
+            child: buildIconLikePair(),
+            margin: EdgeInsets.fromLTRB(21, 0, 21, 0),
+          ),
+          Container(
+            height: 2,
+            color: Color(0xFFD1D1D1),
+            margin: EdgeInsets.fromLTRB(21, 0, 21, 0),
+          ),
+          Container(
+            width: double.infinity,
+            color: Color(0xFFE2EDE6),
+            child: buildCommentColumn(),
+            margin: EdgeInsets.fromLTRB(21, 0, 21, 0),
+          ),
+        ],
+      );
+// #enddocregion Column
 
   @override
   Widget build(BuildContext context) {
@@ -41,59 +99,6 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
     );
   }
 }
-
-Widget buildColumn() =>
-    // #docregion Column
-    Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          width: double.infinity,
-          height: 130,
-          child: buildAvatarDescriptionPair(),
-          padding: EdgeInsets.fromLTRB(21, 21, 21, 21),
-        ),
-        Container(
-          width: double.infinity,
-          height: 222,
-          child: GestureDetector(
-            child: Icon(
-              Icons.play_circle_filled,
-              color: Color(0xF0282E29),
-              size: 80,
-            ),
-          ),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(new Radius.circular(44)),
-              image: DecorationImage(
-                image: NetworkImage(main_context.watch<UserData>().currentUrl),
-              )),
-        ),
-        Container(
-          width: double.infinity,
-          child: buildTitleIconPair(),
-          padding: EdgeInsets.fromLTRB(21, 0, 21, 21),
-        ),
-        Container(
-          width: double.infinity,
-          color: Color(0xFFE2EDE6),
-          child: buildIconLikePair(),
-          margin: EdgeInsets.fromLTRB(21, 0, 21, 0),
-        ),
-        Container(
-          height: 2,
-          color: Color(0xFFD1D1D1),
-          margin: EdgeInsets.fromLTRB(21, 0, 21, 0),
-        ),
-        Container(
-          width: double.infinity,
-          color: Color(0xFFE2EDE6),
-          child: buildCommentColumn(),
-          margin: EdgeInsets.fromLTRB(21, 0, 21, 0),
-        ),
-      ],
-    );
-// #enddocregion Column
 
 Widget buildAvatarDescriptionPair() => Row(
       crossAxisAlignment: CrossAxisAlignment.start,

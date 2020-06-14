@@ -42,56 +42,88 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: null,
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.close),
-              onPressed: () {
-                _auth.signOut();
-                Navigator.pop(context);
-              }),
-        ],
-        title: Text(context.watch<UserData>().currentChatWith),
-        backgroundColor: Colors.grey,
-      ),
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            MessagesStream(),
-            Container(
-              decoration: kMessageContainerDecoration,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                      controller: messageTextController,
-                      onChanged: (value) {
-                        messageText = value;
-                      },
-                      decoration: kMessageTextFieldDecoration,
-                    ),
-                  ),
-                  FlatButton(
-                    onPressed: () {
-                      messageTextController.clear();
-                      _firestore.collection('messages').add({
-                        'text': messageText,
-                        'sender': loggedInUser.email,
-                      });
-                    },
-                    child: Text(
-                      'Send',
-                      style: kSendButtonTextStyle,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+        leading: IconButton(
+          icon: Icon(
+            Icons.keyboard_return,
+            color: Colors.white,
+            size: 40,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
+//         actions: <Widget>[
+//           IconButton(
+//               icon: Icon(Icons.close),
+//               onPressed: () {
+//                 _auth.signOut();
+//                 Navigator.pop(context);
+//               }),
+//         ],
+        title: Text(context.watch<UserData>().currentChatWith),
+        backgroundColor: Color(0xFF4C6056),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          MessagesStream(),
+          Container(
+            color: Color(0xFFD1D1D1),
+//               decoration: kMessageContainerDecoration,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: 40,
+                  child: Icon(
+                    Icons.graphic_eq,
+                    size: 30,
+                  ),
+                ),
+                Expanded(
+                  child: new ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0),
+                    child: Container(
+                      height: 30,
+                      color: Colors.white,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          contentPadding:
+                              new EdgeInsets.only(left: 10, bottom: 15),
+                        ),
+                        controller: messageTextController,
+                        onChanged: (value) {
+                          messageText = value;
+                        },
+//                      decoration: kMessageTextFieldDecoration,
+                      ),
+                    ),
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.face,
+                    size: 30,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    _firestore.collection('messages').add({
+                      'sender': context.read<UserData>().name,
+                      'text': messageText
+                    });
+                  },
+                  icon: Icon(
+                    Icons.add_circle,
+                    size: 30,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -115,8 +147,9 @@ class MessagesStream extends StatelessWidget {
         for (var message in messages) {
           final messageText = message.data['text'];
           final messageSender = message.data['sender'];
+          final myName = context.watch<UserData>().name;
           if (context.watch<UserData>().currentChatWith != messageSender &&
-              loggedInUser.email != messageSender) {
+              myName != messageSender) {
             continue;
           }
           final currentUser = loggedInUser.email;
@@ -124,16 +157,19 @@ class MessagesStream extends StatelessWidget {
           final messageBubble = MessageBubble(
             sender: messageSender,
             text: messageText,
-            isMe: currentUser == messageSender,
+            isMe: myName == messageSender,
           );
 
           messageBubbles.add(messageBubble);
         }
         return Expanded(
-          child: ListView(
-            reverse: true,
-            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-            children: messageBubbles,
+          child: Container(
+            color: Color(0xFFEFF5E9),
+            child: ListView(
+              reverse: true,
+              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+              children: messageBubbles,
+            ),
           ),
         );
       },

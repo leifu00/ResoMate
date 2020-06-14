@@ -40,6 +40,7 @@ dependencies:
   file_picker:
   audioplayer:
   path_provider:
+  firebase:
   js: ^0.6.0
 
 

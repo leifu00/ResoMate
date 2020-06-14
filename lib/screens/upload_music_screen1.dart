@@ -53,7 +53,8 @@ class _UploadMusicMp3BlackState extends State<UploadMusicMp3Black> {
   Future filePicker(BuildContext context) async {
     try {
       print('here');
-      file = await FilePicker.getFile(type: FileType.image);
+      file = await FilePicker.getFile(
+          type: FileType.custom, allowedExtensions: ['.mp3']);
       print('here2');
       fileName = p.basename(file.path);
       setState(() {

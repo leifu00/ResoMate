@@ -40,7 +40,8 @@ class MessagesStream extends StatelessWidget {
         final messages = snapshot.data.documents.reversed;
         List<Widget> messagesList = [];
         for (var message in messages) {
-          if (message.data['sender'] == context.watch<UserData>().myEmail) {
+          if (message.data['sender'] !=
+              context.watch<UserData>().currentChatWith) {
             continue;
           }
 //          postsList.add(OutlineButton(

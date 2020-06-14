@@ -13,6 +13,8 @@ class UserData extends ChangeNotifier {
   String currentPost;
   String currentUrl;
 
+  String name = 'Peter';
+
   void setCurrentName(String name) {
     currentName = name;
     notifyListeners();

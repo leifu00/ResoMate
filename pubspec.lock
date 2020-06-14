@@ -114,7 +114,7 @@ packages:
     source: hosted
     version: "0.0.4"
   firebase:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase
       url: "https://pub.dartlang.org"

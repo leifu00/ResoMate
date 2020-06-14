@@ -103,6 +103,12 @@ class PostsStream extends StatelessWidget {
                     ),
                     IconButton(
                       icon: Icon(Icons.message, color: Color(0xFF282E29)),
+                      onPressed: () {
+                        context
+                            .read<UserData>()
+                            .setCurrentChatWIth(post.data['name']);
+                        Navigator.pushNamed(context, ChatScreen.id);
+                      },
                     ),
                   ],
                 ),
